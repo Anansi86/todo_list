@@ -1,13 +1,14 @@
+import { useState, useEffect } from 'react';
 import Input from "./Input"
 import Accordion from "./AccordionProgress"
 import AccordionDone from "./AccordionDone"
+import ControlBoard from "./ControlBoard"
+
+
+//const [data, setData] = useState([]);
+
 
 function App() {
-
-
-
-
-
 
 return (
     <>
@@ -16,6 +17,7 @@ return (
         <Input />
         <Accordion />
         <AccordionDone />
+        <ControlBoard />
     </div>
 
 </>
