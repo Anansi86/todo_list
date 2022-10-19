@@ -1,6 +1,6 @@
 function App() {
 
-console.log ("hello, world")
+print ("hello, world")
 
 }
 
