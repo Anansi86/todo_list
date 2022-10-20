@@ -5,18 +5,21 @@ import AccordionDone from "./AccordionDone"
 import ControlBoard from "./ControlBoard"
 
 
-//const [data, setData] = useState([]);
-
 
 function App() {
+    
+  let [input, setInput] = useState("");
+  let [todos, setTodos] = useState([]);
 
 return (
     <>
     <h1>To-do Voo-do</h1>
     <div className= "container">
-        <Input />
-        <Accordion />
-        <AccordionDone />
+       
+       
+        <Input getInput={input} setInput={setInput} getTodos={todos} setTodos={setTodos} />
+        <Accordion getter={todos} setter={setTodos} />
+        <AccordionDone getter={todos} setter={setTodos} />
         <ControlBoard />
     </div>
 
@@ -25,3 +28,9 @@ return (
 }
 
 export default App
+
+/*return (
+  <form onSubmit={handleSubmit}>
+    <button type="submit">Submit</button>
+  </form>
+); */
