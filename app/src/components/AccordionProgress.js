@@ -1,6 +1,7 @@
 import AccordionBodyProgress from "./AccordionBodyProgress"
 
 function AccordionProgress(props) {
+
    return (
     <>
    <div className="accordion" id="accordionExample">
@@ -12,7 +13,9 @@ function AccordionProgress(props) {
     </h2>
     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         
-        <AccordionBodyProgress todos={props.getter} setter={props.setter} />
+  {props.todos.map(todo => 
+    <AccordionBodyProgress todo={todo} setter={props.setter} setClear={props.setClear} />
+  )}
 
     </div>
    </div>

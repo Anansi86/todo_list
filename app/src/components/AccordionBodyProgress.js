@@ -1,16 +1,27 @@
 
 function AccordionBodyProgress(props) {
   
+
+
+  function handlerClick() {
+    props.setClear(props.todo.id);
+  } 
+
+  function handlerDoneClick() {
+    props.setDone;
+  }
+
     return(
   <>
     <div className = "accordion-body">
         <div className = "row">
             <div className = "col">
-              <button className="btn btn-outline-secondary" type="button" id="button-addon1">Done</button> 
-                <p>{props.todos}</p>
+              <button onClick={handlerDoneClick} className="btn btn-outline-secondary" type="button" id="button-addon1">Done</button> 
+                <p>{props.todo.id}</p>
+                <p>{props.todo.noteText}</p>
         </div>
         <div className = "col">
-            <button className="btn btn-outline-secondary" type="button" id="button-addon1">Delete</button> 
+            <button onClick={handlerClick} className="btn btn-outline-secondary" type="button" id="button-addon1">Delete</button> 
           </div>
         </div>
     </div>

@@ -17,4 +17,4 @@ function AccordionBodyDone() {
    )
 }
 
-export default AccordionBodyDone
+export default AccordionBodyDone;

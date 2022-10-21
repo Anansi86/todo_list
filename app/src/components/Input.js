@@ -1,4 +1,4 @@
-import {useState} from "react"
+//import {useState} from "react"
 
 function Input(props) {
   
@@ -9,9 +9,14 @@ function Input(props) {
   }
 
   function handlerClick() {
-    props.setTodos([props.getInput, ...props.getTodos]);
+    let todoItem = {
+      id: Date.now(),
+      noteText: props.getInput
+    };
+
+    props.setTodos([todoItem, ...props.getTodos]);
   } 
-  
+
   return(
  <div className="input-group mb-3">
   <input onChange={handlerChange} type="text" className="form-control" placeholder="Enter activity here!" aria-label="Example text with button addon" aria-describedby="button-addon1"></input>
