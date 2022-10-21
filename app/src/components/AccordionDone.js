@@ -1,6 +1,6 @@
 import AccordionBodyDone from "./AccordionBodyDone"
 
-function AccordionDone() {
+function AccordionDone(props) {
    return (
     <>
    <div className="accordion" id="accordionExample">
@@ -11,8 +11,10 @@ function AccordionDone() {
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-        
-        <AccordionBodyDone />
+      
+       {props.done.map(done => 
+        <AccordionBodyDone done={done} completed={props.setCompleted} />
+       )}
 
     </div>
    </div>

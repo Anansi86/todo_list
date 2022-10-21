@@ -17,32 +17,67 @@ function App() {
 
   // done todo
   let [done, setDone] = useState([]);
+  let [completed, setCompleted] = useState(0);
+  
 
-  console.log (clear)
-  console.log ("current data in todos array: ", todos);
+  console.log("In-progress: ", todos);
+  console.log("Done: ", done);
 
-  if (clear > 0) {
+  /*if (completed > 0) {
     for (let i = 0; i < todos.length; i++) {
       //todos[i] = element to be deleted, i = index number
-      if (clear == todos[i].id) {
-        todos.splice(i,1 );
+      if (completed == todos[i].id) {
+        setDone([todos[i], ...done]);
+        todos.splice(i, 1);
       }
     }
+  }*/
+  
+  useEffect(() => {
+    let savedTodos = localStorage.getItem("todos");
+    if (savedTodos) {
+      setTodos(JSON.parse(savedTodos));
+    }
+  }, []);
+
+  if (todos.length) {
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
+
+  useEffect(() => {
+    if (clear > 0) {
+      for (let i = 0; i < todos.length; i++) {
+        //todos[i] = element to be deleted, i = index number
+        if (clear == todos[i].id) {
+          todos.splice(i, 1);
+        }
+      }
+    }
+  }, [clear])
+
+  useEffect(() => {
+    if (completed > 0) {
+      for (let i = 0; i < todos.length; i++) {
+        //todos[i] = element to be deleted, i = index number
+        if (completed == todos[i].id) {
+          setDone((prev) => [todos[i], ...prev]);
+          todos.splice(i, 1);
+        }
+      }
+    }
+  }, [completed]);
 
 return (
     <>
     <h1>To-do Voo-do</h1>
     <div className= "container">
         <Input getInput={input} setInput={setInput} getTodos={todos} setTodos={setTodos} />
-        <Accordion todos={todos} setter={setTodos} setClear={setClear} />
-        <AccordionDone getter={done} setter={setTodos} />
+        <Accordion todos={todos} setTodos={setTodos} setClear={setClear} completed={setCompleted} />
+        <AccordionDone done={done} setTodos={setTodos} completed={setCompleted}/>
         <ControlBoard />
     </div>
 
 </>
 )
 }
-
 export default App
-
