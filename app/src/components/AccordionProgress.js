@@ -11,10 +11,11 @@ function AccordionProgress(props) {
         In Progress
       </button>
     </h2>
+
     <div id="collapseOne" className="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         
   {props.todos.map(todo => 
-    <AccordionBodyProgress todo={todo} setter={props.setter} setClear={props.setClear} />
+    <AccordionBodyProgress todo={todo} setter={props.setter} setClear={props.setClear} done={props.done} completed={props.completed} />
   )}
 
     </div>
