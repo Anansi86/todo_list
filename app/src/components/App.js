@@ -48,7 +48,7 @@ function App() {
     if (clear > 0) {
       for (let i = 0; i < todos.length; i++) {
         //todos[i] = element to be deleted, i = index number
-        if (clear == todos[i].id) {
+        if (clear === todos[i].id) {
           todos.splice(i, 1);
         }
       }
@@ -59,9 +59,9 @@ function App() {
     if (completed > 0) {
       for (let i = 0; i < todos.length; i++) {
         //todos[i] = element to be deleted, i = index number
-        if (completed == todos[i].id) {
+        if (completed === todos[i].id) {
           setDone((prev) => [todos[i], ...prev]);
-          todos.splice(i, 1);
+          setTodos((prev) => prev.filter(todo => todo.id !== completed));
         }
       }
     }
